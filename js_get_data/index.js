@@ -1,10 +1,14 @@
-// from 01/06/2019 => 31/05/2020 => 365 days
+// from 02/06/2019 => 1/6/2020 => 365 days
+//https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20190602&end=20200602
 
-cells=document.querySelectorAll('.cmc-table__cell');
-kq='[';
-var index=26;
-for(let i=0;i<365;i++){
-	kq+='"'+cells[index].innerText+'",';
-	index+=14;
-}
+// from 02/06/2018 => 1/6/2019 => 365 days
+//https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20180602&end=20190602
+
+kq = '[';
+list_rows = document.querySelectorAll('.cmc-table-row')
+list_rows.forEach(row => {
+	close_price = row.querySelectorAll('td')[4]
+	kq += '"' + close_price.innerText + '",';
+});
+kq +=']'
 console.log(kq)
